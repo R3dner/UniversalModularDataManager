@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}UMDM{% endblock %}</title>
+</head>
+<body>
+  {% if user.is_authenticated %}
+    <div>
+      Zalogowany: <b>{{ user.get_username }}</b>
+      | <a href="{% url 'logout' %}">Wyloguj</a>
+      | <a href="/admin/">Admin</a>
+    </div>
+  {% endif %}
+
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Start{% endblock %}
+
+{% block content %}
+  <h1>UMDM</h1>
+
+  {% if user.is_authenticated %}
+    <p>OK, jesteś zalogowany.</p>
+  {% else %}
+    <p><a href="{% url 'login' %}">Zaloguj</a></p>
+  {% endif %}
+{% endblock %}

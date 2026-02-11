@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Logowanie{% endblock %}
+
+{% block content %}
+  <h1>Logowanie</h1>
+
+  {% if form.errors %}
+    <p style="color:red;">Nieprawidłowy login lub hasło.</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label>Login</label><br>
+      {{ form.username }}
+    </div>
+    <div>
+      <label>Hasło</label><br>
+      {{ form.password }}
+    </div>
+
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+
+    <button type="submit">Zaloguj</button>
+  </form>
+{% endblock %}
